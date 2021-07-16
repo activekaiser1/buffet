@@ -149,7 +149,7 @@ function init() {
         
     
         setInterval(function(){ counter+=xped; 
-  beel(daya[2],counter);
+  
 ctx.clearRect(0,0,window.innerWidth,window.innerWidth);
 
 ctx.beginPath();
@@ -245,8 +245,10 @@ ctx.fill();
                                                                 
                                                                 
 if(counter>(window.innerWidth/3).toFixed(0)){
+                                                                  
             counter=0;                                                          
 counterr++;      
+                                                                  beel(daya[2],counterr);
 
                                                            
 feel.unshift("white");  
@@ -406,7 +408,7 @@ if(nom=="grey"){source[counter].detune.value = 1200;};
 
 feel[0]="red";
 nom = feel[0];
-source[counter].source[counter].start(0);   
+source[counter].start(0);   
 gainNode[counter].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
                         
 };};};
