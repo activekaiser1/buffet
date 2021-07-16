@@ -95,7 +95,12 @@ gainNode[i] = audioCtx.createGain();
 
   }
 
-  request.send();};
+  request.send();
+                                                                  
+                                                                  
+                                                                  
+          source[i].onended = function() { gainNode[i].disconnect(); };                                                       
+                                                                  };
   
   
   
