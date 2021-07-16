@@ -406,8 +406,8 @@ if(nom=="grey"){source[counter].detune.value = 1200;};
 
 feel[0]="red";
 nom = feel[0];
-source[0].start(0);   
-gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
+source[counter].source[counter].start(0);   
+gainNode[counter].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
                         
 };};};
           
@@ -417,8 +417,8 @@ gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
 
 feel[0]="blue";
 nom = feel[0];
-source[1].start(0); 
-gainNode[1].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;               
+source[counter].start(0); 
+gainNode[counter].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;               
               
 };};};
                                 
@@ -429,8 +429,8 @@ gainNode[1].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;
               
 feel[0]="green";
 nom = feel[0];
-source[2].start(0);
-gainNode[2].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100;                  
+source[counter].start(0);
+gainNode[counter].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100;                  
                
 };};};
             
@@ -440,8 +440,8 @@ gainNode[2].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100
 
 feel[0]="grey";  
 nom = feel[0];
-source[3].start(0); 
-gainNode[3].gain.value = (window.innerWidth/2-5-tiltFB*20-window.innerWidth)/100;              
+source[counter].start(0); 
+gainNode[counter].gain.value = (window.innerWidth/2-5-tiltFB*20-window.innerWidth)/100;              
 
 };};};
              
