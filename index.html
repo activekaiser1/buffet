@@ -99,7 +99,8 @@ gainNode[i] = audioCtx.createGain();
                                                                   
                                                                   
                                                                   
-          source[i].onended = function() { gainNode[i].disconnect(); };                                                       
+          source[i].onended = function() { source[i].disconnect(); 
+                                                                  gainNode[i].disconnect(); };                                                       
                                                                   };
   
   
