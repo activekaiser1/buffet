@@ -61,14 +61,16 @@ var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav"
 "https://archive.org/download/loyalteesig-hi-hat/LoyalteesigHi%20Hat.WAV",
  "https://archive.org/download/trap-crash/Trap%20Crash.wav",
 "https://archive.org/download/calm-club-808/Calm%20Club%20808.wav"];
-            var i;
-for (i = 0; i < 4; i++) {
-source[i] = audioCtx.createBufferSource();
-gainNode[i] = audioCtx.createGain();
-};
+  
 
 
 function beel(url,i){
+                                                                  
+                   
+source[i] = audioCtx.createBufferSource();
+gainNode[i] = audioCtx.createGain();
+                                                           
+                                                                  
   var request = new XMLHttpRequest();
    request.open('GET', url, true);
 
