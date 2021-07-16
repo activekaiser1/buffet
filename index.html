@@ -85,7 +85,7 @@ gainNode[i] = audioCtx.createGain();
         source[i].buffer = buffer;
         source[i].connect(gainNode[i]);
         gainNode[i].connect(audioCtx.destination);
-       source[i].loop = true;
+       source[i].loop = false;
        
       },
 
