@@ -56,55 +56,52 @@ cc.style.top = window.innerHeight/2 - window.innerWidth/2 + "px";
                                                                 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var source = [];
-var gainNode= [];
+var bufferLike = [];
+var gainNode = [];
 var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav",
 "https://archive.org/download/loyalteesig-hi-hat/LoyalteesigHi%20Hat.WAV",
  "https://archive.org/download/trap-crash/Trap%20Crash.wav",
 "https://archive.org/download/calm-club-808/Calm%20Club%20808.wav"];
 
 
-function beel(url,i){
-                                                                  
-                                                                  
-                    
-source[i] = audioCtx.createBufferSource();
-gainNode[i] = audioCtx.createGain();
-                                           
-                                                                  
-                                                                  
-                                                                  
-  var request = new XMLHttpRequest();
-   request.open('GET', url, true);
 
- 
+var i;
+for (i = 0; i < 4; i++) {
+
+
+createSound(daya[i]);
+};
+
+
+
+function createSound(inyh) {
+
+
+  var request = new XMLHttpRequest();
+
+  request.open("GET", inyh, true);
 
   request.responseType = 'arraybuffer';
 
   request.onload = function() {
-    var audioData = request.response;
 
+    audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer) {
-        source[i].buffer = buffer;
-        source[i].connect(gainNode[i]);
-        gainNode[i].connect(audioCtx.destination);
-       source[i].loop = false;
-       
+    
+       bufferLike.push(buffer);
+    
       },
 
-      );
+      function(e){ console.log("Error with decoding audio data" + e.err); });
 
   }
 
   request.send();
-                                                                  
-                                                                  
-                                                                  
-          source[i].onended = function() { source[i].disconnect(); 
-                                                                  gainNode[i].disconnect(); };                                                       
-                                                                  };
-  
-  
-  
+
+
+};
+
+
 
 
   
@@ -160,7 +157,12 @@ function init() {
     
         setInterval(function(){ counter+=xped; 
  
-                                                                   beel(daya[0],counter); beel(daya[1],counter); beel(daya[2],counter); beel(daya[3],counter);
+               source[counter] = audioCtx.createBufferSource();
+  source[counter].buffer = bufferLike[0];
+  source[counter].connect(audioCtx.destination);
+  source[counter].loop = false;
+  source[counter].start();
+                                                   
                                                                  
 ctx.clearRect(0,0,window.innerWidth,window.innerWidth);
 
