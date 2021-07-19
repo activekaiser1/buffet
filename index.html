@@ -103,7 +103,7 @@ function startPeristentVibrate(duration, interval) {
 								  
 								  
 								  
-startPeristentVibrate(100,100);								  
+							  
 								  
 								  
 								  
@@ -612,7 +612,8 @@ feel[0]="red";
 nom = feel[0];
 source[0].start(0);   
 gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
-        
+        startVibrate(100);
+stopVibrate();	
              
 };};};
           
