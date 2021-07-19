@@ -75,27 +75,11 @@ var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav"
 								  
 								  
 								  
-								  
-								  	/*
-		alert("navigator.vibrate?  " + (navigator.vibrate ? "Yes" : "No"));
-		alert("navigator.webkitVibrate?  " + (navigator.webkitVibrate ? "Yes" : "No"));
-		alert("navigator.oVibrate?  " + (navigator.oVibrate ? "Yes" : "No"));
-		*/
+
 		function startVibrate(level) {
 			navigator.vibrate(level);
 		}
-
-		var vibrateInterval;
-		function startPeristentVibrate(level, interval) {
-			vibrateInterval = setInterval(function() {
-				startVibrate(level);
-			}, interval);
-		}
-		
-		function stopVibrate() {
-			if(vibrateInterval) clearInterval(vibrateInterval);
-			navigator.vibrate(0);
-		}					  
+	  
 								  
 								  
 							  
@@ -602,12 +586,12 @@ if(nom=="grey"){source[3].detune.value = 1200;};
             if(window.innerWidth/2-5-tiltLR*20<0){
               if(window.innerWidth/2-5-tiltFB*20>0){                   
                    if(window.innerWidth/2-5-tiltFB*20<window.innerWidth){               
-
+startVibrate(100);
 feel[0]="red";
 nom = feel[0];
 source[0].start(0);   
 gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
-startVibrate(1000);
+
 
              
 };};};
@@ -615,7 +599,7 @@ startVibrate(1000);
             if(window.innerWidth/2-5-tiltFB*20<0){
               if(window.innerWidth/2-5-tiltLR*20>0){
               if(window.innerWidth/2-5-tiltLR*20<window.innerWidth){
-
+startVibrate(100);
 feel[0]="blue";
 nom = feel[0];
 source[1].start(0); 
@@ -628,7 +612,7 @@ gainNode[1].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;
             if(window.innerWidth/2-5-tiltLR*20>window.innerWidth){
                if(window.innerWidth/2-5-tiltFB*20>0){                   
                    if(window.innerWidth/2-5-tiltFB*20<window.innerWidth){    
-              
+startVibrate(100);              
 feel[0]="green";
 nom = feel[0];
 source[2].start(0);
@@ -640,7 +624,7 @@ gainNode[2].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100
             if(window.innerWidth/2-5-tiltFB*20>window.innerWidth){
                  if(window.innerWidth/2-5-tiltLR*20>0){
               if(window.innerWidth/2-5-tiltLR*20<window.innerWidth){
-
+startVibrate(100);
 feel[0]="grey";  
 nom = feel[0];
 source[3].start(0); 
