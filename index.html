@@ -61,6 +61,19 @@ var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav"
 "https://archive.org/download/loyalteesig-hi-hat/LoyalteesigHi%20Hat.WAV",
  "https://archive.org/download/trap-crash/Trap%20Crash.wav",
 "https://archive.org/download/calm-club-808/Calm%20Club%20808.wav"];
+                                                                  
+                                                                  
+                                                                  
+document.addEventListener("DOMContentLoaded", function(event) {
+     if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+  });                                                                  
+                                                                  
             var i;
 for (i = 0; i < 4; i++) {
 source[i] = audioCtx.createBufferSource();
