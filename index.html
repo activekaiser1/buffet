@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body onload="openFullscreen()">
     <input type="number" id="bpm" value="140" min="0" max="280" style="z-index:1;position:absolute;width:25px;height:25px;">
  
    <button onclick="steep()" style="position:absolute;width:100px;height:100px;left:25px">stepedit</button> 
@@ -62,17 +62,16 @@ var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav"
  "https://archive.org/download/trap-crash/Trap%20Crash.wav",
 "https://archive.org/download/calm-club-808/Calm%20Club%20808.wav"];
                                                                   
-var elem = document.documentElement;                                                                  
-                                                                  
-document.addEventListener("DOMContentLoaded", function(event) {
-     if (elem.requestFullscreen) {
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) { /* Safari */
     elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) { /* IE11 */
     elem.msRequestFullscreen();
   }
-  });                                                                  
+}                                                                 
                                                                   
             var i;
 for (i = 0; i < 4; i++) {
