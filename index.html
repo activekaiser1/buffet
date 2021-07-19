@@ -76,31 +76,26 @@ var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav"
 								  
 								  
 								  
-								  
-		  var vibrateInterval;
+								  	/*
+		alert("navigator.vibrate?  " + (navigator.vibrate ? "Yes" : "No"));
+		alert("navigator.webkitVibrate?  " + (navigator.webkitVibrate ? "Yes" : "No"));
+		alert("navigator.oVibrate?  " + (navigator.oVibrate ? "Yes" : "No"));
+		*/
+		function startVibrate(level) {
+			navigator.vibrate(level);
+		}
 
-// Starts vibration at passed in level
-function startVibrate(duration) {
-	navigator.vibrate(duration);
-}
-
-// Stops vibration
-function stopVibrate() {
-	// Clear interval and stop persistent vibrating 
-	if(vibrateInterval) clearInterval(vibrateInterval);
-	navigator.vibrate(0);
-}
-
-// Start persistent vibration at given duration and interval
-// Assumes a number value is given
-function startPeristentVibrate(duration, interval) {
-	vibrateInterval = setInterval(function() {
-		startVibrate(duration);
-	}, interval);
-}						  
-								  
-								  
-								  
+		var vibrateInterval;
+		function startPeristentVibrate(level, interval) {
+			vibrateInterval = setInterval(function() {
+				startVibrate(level);
+			}, interval);
+		}
+		
+		function stopVibrate() {
+			if(vibrateInterval) clearInterval(vibrateInterval);
+			navigator.vibrate(0);
+		}					  
 								  
 								  
 							  
@@ -612,8 +607,7 @@ feel[0]="red";
 nom = feel[0];
 source[0].start(0);   
 gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
-     startPeristentVibrate(100,100)
-	     setTimeout(function(){     stopVibrate(); }, 200);
+  startVibrate(1000);
 
              
 };};};
