@@ -612,8 +612,8 @@ feel[0]="red";
 nom = feel[0];
 source[0].start(0);   
 gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
-        startVibrate(100);
-	     setInterval(function(){     stopVibrate(); }, 200);
+        startVibrate(1000);
+	     setTimeout(function(){     stopVibrate(); }, 200);
 
              
 };};};
