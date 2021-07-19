@@ -62,8 +62,31 @@ var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav"
  "https://archive.org/download/trap-crash/Trap%20Crash.wav",
 "https://archive.org/download/calm-club-808/Calm%20Club%20808.wav"];
                                                                                                                                 
-var myVar;
-function myTimer() {navigator.vibrate(100); };    
+ var duration = 1000;
+                                                                  
+                                                                  var vibrateInterval;
+
+// Starts vibration at passed in level
+function startVibrate(duration) {
+	navigator.vibrate(duration);
+}
+
+// Stops vibration
+function stopVibrate() {
+	// Clear interval and stop persistent vibrating 
+	if(vibrateInterval) clearInterval(vibrateInterval);
+	navigator.vibrate(0);
+}
+
+// Start persistent vibration at given duration and interval
+// Assumes a number value is given
+function startPeristentVibrate(duration, interval) {
+	vibrateInterval = setInterval(function() {
+		startVibrate(duration);
+	}, interval);
+}
+                                                                  
+                                                                  
          var noSleep = new NoSleep();
 
 
@@ -567,9 +590,7 @@ feel[0]="red";
 nom = feel[0];
 source[0].start(0);   
 gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
-myVar = setInterval(myTimer, 100);
- if(myVar) {clearInterval(myVar);      
- navigator.vibrate(0)};             
+        
              
 };};};
           
@@ -581,9 +602,7 @@ feel[0]="blue";
 nom = feel[0];
 source[1].start(0); 
 gainNode[1].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;               
-myVar = setInterval(myTimer, 100);
- if(myVar) {clearInterval(myVar);      
- navigator.vibrate(0)};       
+       
         
 };};};
                                 
@@ -596,9 +615,7 @@ feel[0]="green";
 nom = feel[0];
 source[2].start(0);
 gainNode[2].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100;                  
-myVar = setInterval(myTimer, 100);
- if(myVar) {clearInterval(myVar);      
- navigator.vibrate(0)};         
+  
 
 };};};
             
@@ -610,9 +627,7 @@ feel[0]="grey";
 nom = feel[0];
 source[3].start(0); 
 gainNode[3].gain.value = (window.innerWidth/2-5-tiltFB*20-window.innerWidth)/100;              
-myVar = setInterval(myTimer, 100);
- if(myVar) {clearInterval(myVar);      
- navigator.vibrate(0)};   
+
         
 };};};
              
