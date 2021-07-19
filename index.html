@@ -602,12 +602,12 @@ if(nom=="grey"){source[3].detune.value = 1200;};
             if(window.innerWidth/2-5-tiltLR*20<0){
               if(window.innerWidth/2-5-tiltFB*20>0){                   
                    if(window.innerWidth/2-5-tiltFB*20<window.innerWidth){               
-startVibrate(1000);
+
 feel[0]="red";
 nom = feel[0];
 source[0].start(0);   
 gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
-
+startVibrate(1000);
 
              
 };};};
