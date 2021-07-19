@@ -567,8 +567,8 @@ nom = feel[0];
 source[0].start(0);   
 gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
 navigator.vibrate(100); 
+             setTimeout(function(){ navigator.vibrate(0); }, 100);
              
-             navigator.vibrate(0);
 };};};
           
             if(window.innerWidth/2-5-tiltFB*20<0){
@@ -580,7 +580,7 @@ nom = feel[0];
 source[1].start(0); 
 gainNode[1].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;               
 navigator.vibrate(100);    
-                  navigator.vibrate(0);
+              setTimeout(function(){ navigator.vibrate(0); }, 100);
 };};};
                                 
          
@@ -593,7 +593,7 @@ nom = feel[0];
 source[2].start(0);
 gainNode[2].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100;                  
 navigator.vibrate(100);   
- navigator.vibrate(0);
+setTimeout(function(){ navigator.vibrate(0); }, 100);
 };};};
             
             if(window.innerWidth/2-5-tiltFB*20>window.innerWidth){
@@ -605,7 +605,7 @@ nom = feel[0];
 source[3].start(0); 
 gainNode[3].gain.value = (window.innerWidth/2-5-tiltFB*20-window.innerWidth)/100;              
 navigator.vibrate(100);
-                  navigator.vibrate(0);
+          setTimeout(function(){ navigator.vibrate(0); }, 100);
 };};};
              
               
