@@ -56,55 +56,49 @@ cc.style.top = window.innerHeight/2 - window.innerWidth/2 + "px";
                                                                 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var source = [];
-var bufferLike = [];
-var gainNode = [];
+var gainNode= [];
 var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav",
 "https://archive.org/download/loyalteesig-hi-hat/LoyalteesigHi%20Hat.WAV",
  "https://archive.org/download/trap-crash/Trap%20Crash.wav",
 "https://archive.org/download/calm-club-808/Calm%20Club%20808.wav"];
-
-
-
-var i;
+            var i;
 for (i = 0; i < 4; i++) {
-
-
-createSound(daya[i]);
+source[i] = audioCtx.createBufferSource();
+gainNode[i] = audioCtx.createGain();
 };
 
 
-
-function createSound(inyh) {
-
-
+function beel(url,i){
   var request = new XMLHttpRequest();
+   request.open('GET', url, true);
 
-  request.open("GET", inyh, true);
+ 
 
   request.responseType = 'arraybuffer';
 
   request.onload = function() {
+    var audioData = request.response;
 
-    audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer) {
-    
-       bufferLike.push(buffer);
-    
+        source[i].buffer = buffer;
+        source[i].connect(gainNode[i]);
+        gainNode[i].connect(audioCtx.destination);
+       source[i].loop = true;
+       
       },
 
-      function(e){ console.log("Error with decoding audio data" + e.err); });
+      );
 
   }
 
-  request.send();
-
-
-};
-
-
-
-
+  request.send();};
   
+  
+  
+  var i;
+for (i = 0; i < 4; i++) {
+  beel(daya[i],i);
+  };
                                                                 
                                                                 
 function steep() {
@@ -153,17 +147,10 @@ function init() {
 }
         
         
-        setTimeout(function(){
+        
     
         setInterval(function(){ counter+=xped; 
- 
-               source[counter] = audioCtx.createBufferSource();
-  source[counter].buffer = bufferLike[0];
-  source[counter].connect(audioCtx.destination);
-  source[counter].loop = false;
-  source[counter].start();
-                                                   
-                                                                 
+
 ctx.clearRect(0,0,window.innerWidth,window.innerWidth);
 
 ctx.beginPath();
@@ -197,9 +184,9 @@ ctx.stroke();
                                                                 
  if(gud==10) {      
  //y                                                             
-   var i;
+  var i;
 for (i = 0; i < 12; i++) {
-ctx.fillStyle="red";
+ctx.fillStyle=fell[i];
 ctx.beginPath();
 ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1-counter/2)+((window.innerWidth+counter)/12)*i), (window.innerWidth)+counter/2);
@@ -246,56 +233,6 @@ ctx.fill();
 };
 
 
-//xr                                                            
-  var i;
-for (i = 0; i < 12; i++) {
-ctx.fillStyle="white";
-ctx.beginPath();
-ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
-ctx.lineTo((window.innerWidth)+counter/2,((1-counter/2)+((window.innerWidth+counter)/12)*i));
-ctx.lineTo((window.innerWidth)+counter/2,((1-counter/2)+((window.innerWidth+counter)/12)*(i+1)));
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-};
-
-var i;
-for (i = 12; i < 24; i++) {
-ctx.fillStyle="white";
-ctx.beginPath();
-ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
-ctx.lineTo((window.innerWidth-window.innerWidth/6)+counter/2,((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*(i-12)));
-ctx.lineTo((window.innerWidth-window.innerWidth/6)+counter/2,((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*((i-12)+1)));
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-};
-
-var i;
-for (i = 24; i < 36; i++) {
-ctx.fillStyle="white";
-ctx.beginPath();
-ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
-ctx.lineTo((window.innerWidth-window.innerWidth/3)+counter/2,((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*(i-24)));
-ctx.lineTo((window.innerWidth-window.innerWidth/3)+counter/2,((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*((i-24)+1)));
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-};
-                     
-var i;
-for (i = 36; i < 48; i++) {
-ctx.fillStyle="white";
-ctx.beginPath();
-ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
-ctx.lineTo(window.innerWidth/2+counter/2,((1+window.innerWidth/2-counter/2)+((counter)/12)*(i-36)));
-ctx.lineTo(window.innerWidth/2+counter/2,((1+window.innerWidth/2-counter/2)+((counter)/12)*((i-36)+1)));
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-}; 
-
-
                      
                      
 };
@@ -333,83 +270,83 @@ fell.unshift("white"); fell.unshift("white"); fell.unshift("white"); fell.unshif
                                                                                         
 if(fell[36+12] == nom){fell[0]=fell[36+12];
 
-if(nom=="red"){source[counter].detune.value = 0;};
-if(nom=="blue"){source[counter].detune.value = 0;};
-if(nom=="green"){source[counter].detune.value = 0;};
-if(nom=="grey"){source[counter].detune.value = 0;};              
+if(nom=="red"){source[0].detune.value = 0;};
+if(nom=="blue"){source[1].detune.value = 0;};
+if(nom=="green"){source[2].detune.value = 0;};
+if(nom=="grey"){source[3].detune.value = 0;};              
 
                
 }; 
 if(fell[37+12] == nom){fell[1]=fell[37+12];
               
-if(nom=="red"){source[counter].detune.value = 100;};
-if(nom=="blue"){source[counter].detune.value = 100;};
-if(nom=="green"){source[counter].detune.value = 100;};
-if(nom=="grey"){source[counter].detune.value = 100;}; 
+if(nom=="red"){source[0].detune.value = 100;};
+if(nom=="blue"){source[1].detune.value = 100;};
+if(nom=="green"){source[2].detune.value = 100;};
+if(nom=="grey"){source[3].detune.value = 100;}; 
               
 }; 
               
 if(fell[38+12] == nom){fell[2]=fell[38+12];
-if(nom=="red"){source[counter].detune.value = 200;};
-if(nom=="blue"){source[counter].detune.value = 200;};
-if(nom=="green"){source[counter].detune.value = 200;};
-if(nom=="grey"){source[counter].detune.value = 200;}; 
+if(nom=="red"){source[0].detune.value = 200;};
+if(nom=="blue"){source[1].detune.value = 200;};
+if(nom=="green"){source[2].detune.value = 200;};
+if(nom=="grey"){source[3].detune.value = 200;}; 
               
               
 }; 
 if(fell[39+12] == nom){fell[3]=fell[39+12];
-if(nom=="red"){source[counter].detune.value = 300;};
-if(nom=="blue"){source[counter].detune.value = 300;};
-if(nom=="green"){source[counter].detune.value = 300;};
-if(nom=="grey"){source[counter].detune.value = 300;}; 
+if(nom=="red"){source[0].detune.value = 300;};
+if(nom=="blue"){source[1].detune.value = 300;};
+if(nom=="green"){source[2].detune.value = 300;};
+if(nom=="grey"){source[3].detune.value = 300;}; 
 }; 
 if(fell[40+12] == nom){fell[4]=fell[40+12];
-if(nom=="red"){source[counter].detune.value = 400;};
-if(nom=="blue"){source[counter].detune.value = 400;};
-if(nom=="green"){source[counter].detune.value = 400;};
-if(nom=="grey"){source[counter].detune.value = 400;}; 
+if(nom=="red"){source[0].detune.value = 400;};
+if(nom=="blue"){source[1].detune.value = 400;};
+if(nom=="green"){source[2].detune.value = 400;};
+if(nom=="grey"){source[3].detune.value = 400;}; 
 }; 
 if(fell[41+12] == nom){fell[5]=fell[41+12];
-if(nom=="red"){source[counter].detune.value = 500;};
-if(nom=="blue"){source[counter].detune.value = 500;};
-if(nom=="green"){source[counter].detune.value = 500;};
-if(nom=="grey"){source[counter].detune.value = 500;}; 
+if(nom=="red"){source[0].detune.value = 500;};
+if(nom=="blue"){source[1].detune.value = 500;};
+if(nom=="green"){source[2].detune.value = 500;};
+if(nom=="grey"){source[3].detune.value = 500;}; 
 };  
 if(fell[42+12] == nom){fell[6]=fell[42+12];
-if(nom=="red"){source[counter].detune.value = 600;};
-if(nom=="blue"){source[counter].detune.value = 600;};
-if(nom=="green"){source[counter].detune.value = 600;};
-if(nom=="grey"){source[counter].detune.value = 600;}; 
+if(nom=="red"){source[0].detune.value = 600;};
+if(nom=="blue"){source[1].detune.value = 600;};
+if(nom=="green"){source[2].detune.value = 600;};
+if(nom=="grey"){source[3].detune.value = 600;}; 
 };  
 if(fell[43+12] == nom){fell[7]=fell[43+12];
-if(nom=="red"){source[counter].detune.value = 700;};
-if(nom=="blue"){source[counter].detune.value = 700;};
-if(nom=="green"){source[counter].detune.value = 700;};
-if(nom=="grey"){source[counter].detune.value = 700;}; 
+if(nom=="red"){source[0].detune.value = 700;};
+if(nom=="blue"){source[1].detune.value = 700;};
+if(nom=="green"){source[2].detune.value = 700;};
+if(nom=="grey"){source[3].detune.value = 700;}; 
 };  
 if(fell[44+12] == nom){fell[8]=fell[44+12];
-if(nom=="red"){source[counter].detune.value = 800;};
-if(nom=="blue"){source[counter].detune.value = 800;};
-if(nom=="green"){source[counter].detune.value = 800;};
-if(nom=="grey"){source[counter].detune.value = 800;}; 
+if(nom=="red"){source[0].detune.value = 800;};
+if(nom=="blue"){source[1].detune.value = 800;};
+if(nom=="green"){source[2].detune.value = 800;};
+if(nom=="grey"){source[3].detune.value = 800;}; 
 };  
 if(fell[45+12] == nom){fell[9]=fell[45+12];
-if(nom=="red"){source[counter].detune.value = 900;};
-if(nom=="blue"){source[counter].detune.value = 900;};
-if(nom=="green"){source[counter].detune.value = 900;};
-if(nom=="grey"){source[counter].detune.value = 900;}; 
+if(nom=="red"){source[0].detune.value = 900;};
+if(nom=="blue"){source[1].detune.value = 900;};
+if(nom=="green"){source[2].detune.value = 900;};
+if(nom=="grey"){source[3].detune.value = 900;}; 
 };  
 if(fell[46+12] == nom){fell[10]=fell[46+12];
-if(nom=="red"){source[counter].detune.value = 1000;};
-if(nom=="blue"){source[counter].detune.value = 1000;};
-if(nom=="green"){ssource[counter].detune.value = 1000;};
-if(nom=="grey"){source[counter].detune.value = 1000;}; 
+if(nom=="red"){source[0].detune.value = 1000;};
+if(nom=="blue"){source[1].detune.value = 1000;};
+if(nom=="green"){source[2].detune.value = 1000;};
+if(nom=="grey"){source[3].detune.value = 1000;}; 
 };  
 if(fell[47+12] == nom){fell[11]=fell[47+12];
-if(nom=="red"){source[counter].detune.value = 1200;};
-if(nom=="blue"){source[counter].detune.value = 1200;};
-if(nom=="green"){source[counter].detune.value = 1200;};
-if(nom=="grey"){source[counter].detune.value = 1200;}; 
+if(nom=="red"){source[0].detune.value = 1200;};
+if(nom=="blue"){source[1].detune.value = 1200;};
+if(nom=="green"){source[2].detune.value = 1200;};
+if(nom=="grey"){source[3].detune.value = 1200;}; 
 };  
                                                                                    
                                                                                     
@@ -422,19 +359,19 @@ if(nom=="grey"){source[counter].detune.value = 1200;};
                                                                                    
                                                                                     
                                                       if(feel[4]=="red"){
-                       source[counter].start(0);
+                       source[0].start(0);
                                                    };  
                                                    
                                                        if(feel[4]=="blue"){
-                        source[counter].start(0);
+                        source[1].start(0);
                                                     };  
                                                    
                                                        if(feel[4]=="green"){
-                      source[counter].start(0);
+                      source[2].start(0);
                                                    };  
                                                    
                                                        if(feel[4]=="grey"){
-                      source[counter].start(0);
+                      source[3].start(0);
                                                    };  
                                                                                     
                                                                                     };  
@@ -453,7 +390,7 @@ if(nom=="grey"){source[counter].detune.value = 1200;};
         
         
         
-        }, 15000);
+        
 
    function deviceOrientationHandler(tiltLR, tiltFB, dir) {
 
@@ -470,8 +407,8 @@ if(nom=="grey"){source[counter].detune.value = 1200;};
 
 feel[0]="red";
 nom = feel[0];
-source[counter].source[counter].start(0);   
-gainNode[counter].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
+source[0].start(0);   
+gainNode[0].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
                         
 };};};
           
@@ -481,8 +418,8 @@ gainNode[counter].gain.value = (Math.abs(window.innerWidth/2-5-tiltLR*20))/100;
 
 feel[0]="blue";
 nom = feel[0];
-source[counter].start(0); 
-gainNode[counter].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;               
+source[1].start(0); 
+gainNode[1].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;               
               
 };};};
                                 
@@ -493,8 +430,8 @@ gainNode[counter].gain.value = (Math.abs(window.innerWidth/2-5-tiltFB*20))/100;
               
 feel[0]="green";
 nom = feel[0];
-source[counter].start(0);
-gainNode[counter].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100;                  
+source[2].start(0);
+gainNode[2].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidth)/100;                  
                
 };};};
             
@@ -504,8 +441,8 @@ gainNode[counter].gain.value = (window.innerWidth/2-5-tiltLR*20-window.innerWidt
 
 feel[0]="grey";  
 nom = feel[0];
-source[counter].start(0); 
-gainNode[counter].gain.value = (window.innerWidth/2-5-tiltFB*20-window.innerWidth)/100;              
+source[3].start(0); 
+gainNode[3].gain.value = (window.innerWidth/2-5-tiltFB*20-window.innerWidth)/100;              
 
 };};};
              
