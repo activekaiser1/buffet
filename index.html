@@ -137,7 +137,7 @@ if(countra==2){stepedit=0;countra=0;};
 function keey() {
 counttra++;
 gud = 10;
-xped = 20;
+xped = 25;
 if(counttra==2){gud=0;counttra=0;xped=5};                                                           
                                                             
 };   
@@ -181,7 +181,7 @@ counter+=xped;
 ctx.clearRect(0,0,window.innerWidth,window.innerWidth);
 
 ctx.beginPath();
-ctx.rect(5-counter/2, 5-counter/2, (window.innerWidth-10)-0+counter, (window.innerWidth-10)-0+counter);
+ctx.rect(50-counter/2, 50-counter/2, (window.innerWidth-50)-0+counter, (window.innerWidth-50)-0+counter);
 ctx.fillStyle = feel[0];
 ctx.fill();
 ctx.stroke();
