@@ -213,14 +213,14 @@ ctx.stroke();
  //y                                                             
   var i;
 for (i = 0; i < 12; i++) {
-	
+	if(i==0 || i==12){ctx.strokeStyle="red";};
 ctx.fillStyle=fell[i];
 ctx.beginPath();
 ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1-counter/2)+((window.innerWidth+counter)/12)*i), (window.innerWidth)+counter/2);
 ctx.lineTo(((1-counter/2)+((window.innerWidth+counter)/12)*(i+1)), (window.innerWidth)+counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };
 
@@ -232,7 +232,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*(i-12)), (window.innerWidth-window.innerWidth/6)+counter/2);
 ctx.lineTo(((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*((i-12)+1)), (window.innerWidth-window.innerWidth/6)+counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };
 
@@ -244,7 +244,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*(i-24)), (window.innerWidth-window.innerWidth/3)+counter/2);
 ctx.lineTo(((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*((i-24)+1)), (window.innerWidth-window.innerWidth/3)+counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };
 
@@ -256,7 +256,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1+window.innerWidth/2-counter/2)+((counter)/12)*(i-36)), window.innerWidth/2+counter/2);
 ctx.lineTo(((1+window.innerWidth/2-counter/2)+((counter)/12)*((i-36)+1)), window.innerWidth/2+counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };
 
@@ -269,7 +269,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo((window.innerWidth)+counter/2,((1-counter/2)+((window.innerWidth+counter)/12)*i));
 ctx.lineTo((window.innerWidth)+counter/2,((1-counter/2)+((window.innerWidth+counter)/12)*(i+1)));
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };
    
@@ -282,7 +282,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo((window.innerWidth-window.innerWidth/6)+counter/2,((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*(i-12)));
 ctx.lineTo((window.innerWidth-window.innerWidth/6)+counter/2,((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*((i-12)+1)));
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                    
                      
@@ -294,6 +294,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo((window.innerWidth-window.innerWidth/3)+counter/2,((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*(i-24)));
 ctx.lineTo((window.innerWidth-window.innerWidth/3)+counter/2,((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*((i-24)+1)));
 ctx.closePath();
+ctx.stroke();
 ctx.fill();
 };
                      
@@ -305,7 +306,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(window.innerWidth/2+counter/2,((1+window.innerWidth/2-counter/2)+((counter)/12)*(i-36)));
 ctx.lineTo(window.innerWidth/2+counter/2,((1+window.innerWidth/2-counter/2)+((counter)/12)*((i-36)+1)));
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                     
 
@@ -318,7 +319,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1-counter/2)+((window.innerWidth+counter)/12)*i), 1-counter/2);
 ctx.lineTo(((1-counter/2)+((window.innerWidth+counter)/12)*(i+1)), 1-counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                     
  
@@ -330,7 +331,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*(i-12)), (1+window.innerWidth/6)-counter/2);
 ctx.lineTo(((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*((i-12)+1)), (1+window.innerWidth/6)-counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                     
  
@@ -342,7 +343,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*(i-24)), (1+window.innerWidth/3)-counter/2);
 ctx.lineTo(((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*((i-24)+1)), (1+window.innerWidth/3)-counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                     
    
@@ -354,7 +355,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(((1+window.innerWidth/2-counter/2)+((counter)/12)*(i-36)), window.innerWidth/2-counter/2);
 ctx.lineTo(((1+window.innerWidth/2-counter/2)+((counter)/12)*((i-36)+1)), window.innerWidth/2-counter/2);
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                     
   
@@ -367,7 +368,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo((1)-counter/2,((1-counter/2)+((window.innerWidth+counter)/12)*i));
 ctx.lineTo((1)-counter/2,((1-counter/2)+((window.innerWidth+counter)/12)*(i+1)));
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };
    
@@ -380,7 +381,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo((1+window.innerWidth/6)-counter/2,((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*(i-12)));
 ctx.lineTo((1+window.innerWidth/6)-counter/2,((1+window.innerWidth/6-counter/2)+((window.innerWidth-window.innerWidth/3+counter)/12)*((i-12)+1)));
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                    
                      
@@ -392,7 +393,7 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo((1+window.innerWidth/3)-counter/2,((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*(i-24)));
 ctx.lineTo((1+window.innerWidth/3)-counter/2,((1+window.innerWidth/3-counter/2)+((window.innerWidth-window.innerWidth/1.5+counter)/12)*((i-24)+1)));
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };
                      
@@ -404,11 +405,11 @@ ctx.moveTo(window.innerWidth/2, window.innerWidth/2);
 ctx.lineTo(window.innerWidth/2-counter/2,((1+window.innerWidth/2-counter/2)+((counter)/12)*(i-36)));
 ctx.lineTo(window.innerWidth/2-counter/2,((1+window.innerWidth/2-counter/2)+((counter)/12)*((i-36)+1)));
 ctx.closePath();
-
+ctx.stroke();
 ctx.fill();
 };                     
                     
- ctx.stroke();                    
+                     
                      
 };
 
