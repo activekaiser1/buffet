@@ -86,44 +86,34 @@ var daya = ["https://archive.org/download/loyalteesigsnare/LoyalteesigSnare.wav"
 								  
 								  
 								  
-            var i;
-for (i = 0; i < 4; i++) {
-source[i] = audioCtx.createBufferSource();
-gainNode[i] = audioCtx.createGain();
-};
+           
+function createSound(inyh) {
 
 
-function beel(url,i){
   var request = new XMLHttpRequest();
-   request.open('GET', url, true);
 
- 
+  request.open("GET", inyh, true);
 
   request.responseType = 'arraybuffer';
 
   request.onload = function() {
-    var audioData = request.response;
 
+    audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer) {
-        source[i].buffer = buffer;
-        source[i].connect(gainNode[i]);
-        gainNode[i].connect(audioCtx.destination);
-       source[i].loop = true;
-       
+    
+       bufferLike.push(buffer);
+    
       },
 
-      );
+      function(e){ console.log("Error with decoding audio data" + e.err); });
 
   }
 
-  request.send();};
-  
-  
-  
-  var i;
-for (i = 0; i < 4; i++) {
-  beel(daya[i],i);
-  };
+  request.send();
+
+
+};
+
                                                                 
                                                                 
 function steep() {
